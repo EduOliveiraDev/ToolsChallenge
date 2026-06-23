@@ -2,7 +2,7 @@ package com.github.eduoliveiradev.tools_java_challenge.dto.response;
 
 import java.time.LocalDateTime;
 
-public record DescricaoResponse(
+public record DescriptionResponse(
         String valor,
         LocalDateTime dataHora,
         String estabelecimento,

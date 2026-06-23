@@ -1,15 +1,15 @@
 package com.github.eduoliveiradev.tools_java_challenge.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.DescricaoRequest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.FormaPagamentoRequest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.PagamentoResquest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.TransacaoRequest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.DescricaoResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.FormaPagamentoResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.PagamentoResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.TransacaoResponse;
-import com.github.eduoliveiradev.tools_java_challenge.service.PagamentoService;
+import com.github.eduoliveiradev.tools_java_challenge.dto.request.DescriptionRequest;
+import com.github.eduoliveiradev.tools_java_challenge.dto.request.PaymentMethodRequest;
+import com.github.eduoliveiradev.tools_java_challenge.dto.request.PaymentResquest;
+import com.github.eduoliveiradev.tools_java_challenge.dto.request.TransactionRequest;
+import com.github.eduoliveiradev.tools_java_challenge.dto.response.DescriptionResponse;
+import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentMethodResponse;
+import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentResponse;
+import com.github.eduoliveiradev.tools_java_challenge.dto.response.TransactionResponse;
+import com.github.eduoliveiradev.tools_java_challenge.service.PaymentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,14 +26,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PagamentoController.class)
-class PagamentoControllerTest {
+@WebMvcTest(PaymentController.class)
+class PaymentControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private PagamentoService pagamentoService;
+    private PaymentService paymentService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -44,29 +44,29 @@ class PagamentoControllerTest {
         var dataHora = LocalDateTime.now();
         var id = UUID.randomUUID().toString();
 
-        PagamentoResquest request =
-                new PagamentoResquest(
-                        new TransacaoRequest(
+        PaymentResquest request =
+                new PaymentResquest(
+                        new TransactionRequest(
                                 "1234567890123456",
                                 id,
-                                new DescricaoRequest(
+                                new DescriptionRequest(
                                         "99.90",
                                         dataHora,
                                         "Loja Teste"
                                 ),
-                                new FormaPagamentoRequest(
+                                new PaymentMethodRequest(
                                         "CREDITO",
                                         1
                                 )
                         )
                 );
 
-        PagamentoResponse responseMock =
-                new PagamentoResponse(
-                        new TransacaoResponse(
+        PaymentResponse responseMock =
+                new PaymentResponse(
+                        new TransactionResponse(
                                 "1234567890123456",
                                 id,
-                                new DescricaoResponse(
+                                new DescriptionResponse(
                                         "99.90",
                                         dataHora,
                                         "Loja Teste",
@@ -74,14 +74,14 @@ class PagamentoControllerTest {
                                         "147258369",
                                         "APROVADO"
                                 ),
-                                new FormaPagamentoResponse(
+                                new PaymentMethodResponse(
                                         "CREDITO",
                                         1
                                 )
                         )
                 );
 
-        when(pagamentoService.criar(any())).thenReturn(responseMock);
+        when(paymentService.criar(any())).thenReturn(responseMock);
 
         mockMvc.perform(post("/pagamentos")
                         .contentType(MediaType.APPLICATION_JSON)

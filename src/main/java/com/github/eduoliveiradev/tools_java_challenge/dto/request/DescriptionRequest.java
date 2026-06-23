@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDateTime;
 
-public record DescricaoRequest(
+public record DescriptionRequest(
         @Positive
         String valor,
         @NotBlank
