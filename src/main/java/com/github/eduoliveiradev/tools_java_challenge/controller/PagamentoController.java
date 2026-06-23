@@ -1,7 +1,7 @@
 package com.github.eduoliveiradev.tools_java_challenge.controller;
 
-import com.github.eduoliveiradev.tools_java_challenge.dto.PagamentoResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.PagamentoResquest;
+import com.github.eduoliveiradev.tools_java_challenge.dto.response.PagamentoResponse;
+import com.github.eduoliveiradev.tools_java_challenge.dto.request.PagamentoResquest;
 import com.github.eduoliveiradev.tools_java_challenge.service.PagamentoService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
