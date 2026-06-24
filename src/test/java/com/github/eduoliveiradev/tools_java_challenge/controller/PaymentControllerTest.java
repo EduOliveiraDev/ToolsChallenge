@@ -81,7 +81,7 @@ class PaymentControllerTest {
                         )
                 );
 
-        when(paymentService.criar(any())).thenReturn(responseMock);
+        when(paymentService.create(any())).thenReturn(responseMock);
 
         mockMvc.perform(post("/pagamentos")
                         .contentType(MediaType.APPLICATION_JSON)

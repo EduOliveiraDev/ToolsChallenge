@@ -1,7 +1,7 @@
 package com.github.eduoliveiradev.tools_java_challenge.controller;
 
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentResponse;
 import com.github.eduoliveiradev.tools_java_challenge.dto.request.PaymentResquest;
+import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentResponse;
 import com.github.eduoliveiradev.tools_java_challenge.service.PaymentService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +19,10 @@ public class PaymentController {
     public PaymentController(PaymentService paymentService) { this.paymentService = paymentService;}
 
     @PostMapping
-    public ResponseEntity<PaymentResponse> processarPagamento(
-            @Valid @RequestBody PaymentResquest pagamentoRequest
+    public ResponseEntity<PaymentResponse> createPayment(
+            @Valid @RequestBody PaymentResquest paymentResquest
     ) {
-        return ResponseEntity.ok(paymentService.criar(pagamentoRequest));
+        return ResponseEntity.ok(paymentService.create(paymentResquest));
     }
 
 }
