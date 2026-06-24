@@ -1,4 +1,4 @@
-package com.github.eduoliveiradev.tools_java_challenge.model;
+package com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto;
 
 import java.time.LocalDateTime;
 

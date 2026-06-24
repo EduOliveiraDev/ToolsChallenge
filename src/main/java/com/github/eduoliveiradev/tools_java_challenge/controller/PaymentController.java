@@ -1,7 +1,7 @@
 package com.github.eduoliveiradev.tools_java_challenge.controller;
 
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.PaymentResquest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentResquest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.PaymentResponse;
 import com.github.eduoliveiradev.tools_java_challenge.service.PaymentService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

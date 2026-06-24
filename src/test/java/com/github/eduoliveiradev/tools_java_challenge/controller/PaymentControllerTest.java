@@ -1,14 +1,14 @@
 package com.github.eduoliveiradev.tools_java_challenge.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.DescriptionRequest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.PaymentMethodRequest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.PaymentResquest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.request.TransactionRequest;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.DescriptionResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentMethodResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.PaymentResponse;
-import com.github.eduoliveiradev.tools_java_challenge.dto.response.TransactionResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.DescriptionRequest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentMethodRequest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentResquest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.TransactionRequest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.DescriptionResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.PaymentMethodResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.PaymentResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.TransactionResponse;
 import com.github.eduoliveiradev.tools_java_challenge.service.PaymentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.github.eduoliveiradev.tools_java_challenge.dto.request;
+package com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 

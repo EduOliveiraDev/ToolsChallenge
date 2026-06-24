@@ -1,6 +1,6 @@
 package com.github.eduoliveiradev.tools_java_challenge.repository;
 
-import com.github.eduoliveiradev.tools_java_challenge.model.Payment;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.Payment;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
