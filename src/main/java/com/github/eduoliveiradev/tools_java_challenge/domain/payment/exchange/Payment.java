@@ -1,11 +1,10 @@
-package com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto;
+package com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange;
 
 import java.time.LocalDateTime;
 
 public record Payment(
-        Long paymentId,
         String cartao,
-        String id,
+        Long id,
         String valor,
         LocalDateTime dataHora,
         String estabelecimento,
@@ -16,6 +15,6 @@ public record Payment(
         Integer parcelas
 ) {
     public Long getId() {
-        return paymentId;
+        return id;
     }
 }

@@ -1,21 +1,16 @@
 package com.github.eduoliveiradev.tools_java_challenge.domain.payment.factory;
 
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.Payment;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentResquest;
-
-import java.util.concurrent.atomic.AtomicLong;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.Payment;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.PaymentResquest;
 
 public class PayFullPayment implements PaymentStrategy {
 
-    private static final AtomicLong count = new AtomicLong(1);
-
     @Override
-    public Payment processPayment(PaymentResquest paymentResquest) {
-        var generateId = count.getAndIncrement();
+    public Payment processPayment(PaymentResquest paymentResquest, Long generatedId) {
+
         return new Payment(
-                generateId,
                 paymentResquest.transacao().cartao(),
-                paymentResquest.transacao().id(),
+                generatedId,
                 paymentResquest.transacao().descricao().valor(),
                 paymentResquest.transacao().descricao().dataHora(),
                 paymentResquest.transacao().descricao().estabelecimento(),

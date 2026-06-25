@@ -1,10 +1,8 @@
-package com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request;
+package com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
 public record PaymentMethodRequest(
-        @NotBlank
         String tipo,
         @Positive
         Integer parcelas

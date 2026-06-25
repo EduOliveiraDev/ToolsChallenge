@@ -1,11 +1,15 @@
 package com.github.eduoliveiradev.tools_java_challenge.domain.payment.factory;
 
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.Payment;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentResquest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.Payment;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.PaymentResquest;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class PaymentFactory {
+
+    private static final AtomicLong count = new AtomicLong(1);
 
     public Payment createPayment(PaymentResquest paymentResquest) {
         if (paymentResquest == null) {
@@ -17,6 +21,8 @@ public class PaymentFactory {
             throw new IllegalArgumentException("Tipo de pagamento não pode ser nulo");
         }
 
+        var generatedId = count.getAndIncrement();
+
         PaymentStrategy strategy = switch (tipo.toUpperCase()) {
             case "AVISTA" -> new PayFullPayment();
             case "PARCELADO LOJA" -> new InstallmentsStorePayment();
@@ -24,6 +30,6 @@ public class PaymentFactory {
             default -> throw new IllegalArgumentException("Tipo de pagamento inválido");
         };
 
-        return strategy.processPayment(paymentResquest);
+        return strategy.processPayment(paymentResquest, generatedId);
     }
 }

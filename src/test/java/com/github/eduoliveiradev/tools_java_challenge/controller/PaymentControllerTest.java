@@ -1,14 +1,14 @@
 package com.github.eduoliveiradev.tools_java_challenge.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.DescriptionRequest;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentMethodRequest;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.PaymentResquest;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.request.TransactionRequest;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.DescriptionResponse;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.PaymentMethodResponse;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.PaymentResponse;
-import com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response.TransactionResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.DescriptionRequest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.PaymentMethodRequest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.PaymentResquest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.TransactionRequest;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response.DescriptionResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response.PaymentMethodResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response.PaymentResponse;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response.TransactionResponse;
 import com.github.eduoliveiradev.tools_java_challenge.service.PaymentService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -42,13 +41,11 @@ class PaymentControllerTest {
     void deveProcessarPagamentoComSucesso() throws Exception {
 
         var dataHora = LocalDateTime.now();
-        var id = UUID.randomUUID().toString();
 
         PaymentResquest request =
                 new PaymentResquest(
                         new TransactionRequest(
                                 "1234567890123456",
-                                id,
                                 new DescriptionRequest(
                                         "99.90",
                                         dataHora,
@@ -65,17 +62,17 @@ class PaymentControllerTest {
                 new PaymentResponse(
                         new TransactionResponse(
                                 "1234567890123456",
-                                id,
+                                1L,
                                 new DescriptionResponse(
                                         "99.90",
                                         dataHora,
                                         "Loja Teste",
                                         "1234567890",
                                         "147258369",
-                                        "APROVADO"
+                                        "AUTORIZADO"
                                 ),
                                 new PaymentMethodResponse(
-                                        "CREDITO",
+                                        "AVISTA",
                                         1
                                 )
                         )
@@ -88,10 +85,10 @@ class PaymentControllerTest {
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.transacao.cartao").value("1234567890123456"))
-                .andExpect(jsonPath(".transacao.id").value(id))
+                .andExpect(jsonPath(".transacao.id").value(1))
                 .andExpect(jsonPath("$.transacao.descricao.valor").value("99.90"))
-                .andExpect(jsonPath("$.transacao.descricao.status").value("APROVADO"))
-                .andExpect(jsonPath("$.transacao.formaPagamento.tipo").value("CREDITO"));
+                .andExpect(jsonPath("$.transacao.descricao.status").value("AUTORIZADO"))
+                .andExpect(jsonPath("$.transacao.formaPagamento.tipo").value("AVISTA"));
     }
 }
 

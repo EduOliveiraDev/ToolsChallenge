@@ -1,4 +1,4 @@
-package com.github.eduoliveiradev.tools_java_challenge.domain.payment.dto.response;
+package com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response;
 
 public record PaymentMethodResponse(
         String tipo,
