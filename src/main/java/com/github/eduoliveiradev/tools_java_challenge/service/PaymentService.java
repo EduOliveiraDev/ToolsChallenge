@@ -37,5 +37,11 @@ public class PaymentService {
         return payments.stream()
                 .map(paymentMapper::toResponse)
                 .toList();
-        }
+    }
+
+    public PaymentResponse getPaymentById(Long id) {
+        var payment = paymentRepository.findById(id)
+                .orElseThrow(() -> new PaymentNotFoundException("Pagamento não encontrado"));
+        return paymentMapper.toResponse(payment);
+    }
 }
