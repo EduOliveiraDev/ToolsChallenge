@@ -70,10 +70,15 @@ Este projeto foi desenvolvido como parte de um desafio técnico com foco em boas
 ./gradlew bootRun
 ```
 
-A API ficará disponível, por padrão, em:
+#### A API ficará disponível, por padrão, em:
 
 ```text
 http://localhost:8080
+```
+### Como rodar build da aplicação
+
+```bash
+./gradlew clean build
 ```
 
 ## Como rodar os testes
