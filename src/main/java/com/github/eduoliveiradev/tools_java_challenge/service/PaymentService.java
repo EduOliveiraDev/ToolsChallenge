@@ -44,4 +44,21 @@ public class PaymentService {
                 .orElseThrow(() -> new PaymentNotFoundException("Pagamento não encontrado"));
         return paymentMapper.toResponse(payment);
     }
+
+    public PaymentResponse cancelPayment(Long id) {
+        var payment = paymentRepository.findById(id)
+                .orElseThrow(() -> new PaymentNotFoundException("Pagamento não encontrado"));
+        var updatedPayment = payment.changeStatus("CANCELADO");
+        paymentRepository.save(updatedPayment);
+        return paymentMapper.toResponse(updatedPayment);
+    }
+
+    public PaymentResponse getPaymentCanceledById(Long id) {
+        var payment = paymentRepository.findById(id)
+                .orElseThrow(() -> new PaymentNotFoundException("Pagamento não encontrado"));
+        if (!payment.status().equals("CANCELADO")) {
+            throw new PaymentNotFoundException("Pagamento não está cancelado");
+        }
+        return paymentMapper.toResponse(payment);
+    }
 }

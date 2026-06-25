@@ -17,10 +17,6 @@ public class PaymentFactory {
         }
 
         var tipo = paymentResquest.transacao().formaPagamento().tipo();
-        if (tipo == null) {
-            throw new IllegalArgumentException("Tipo de pagamento não pode ser nulo");
-        }
-
         var generatedId = count.getAndIncrement();
 
         PaymentStrategy strategy = switch (tipo.toUpperCase()) {

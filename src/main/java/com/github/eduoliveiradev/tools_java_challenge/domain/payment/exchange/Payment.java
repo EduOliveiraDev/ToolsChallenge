@@ -17,4 +17,19 @@ public record Payment(
     public Long getId() {
         return id;
     }
+
+    public Payment changeStatus(String status) {
+        return new Payment(
+                cartao,
+                id,
+                valor,
+                dataHora,
+                estabelecimento,
+                nsu,
+                codigoAutorizacao,
+                status,
+                tipo,
+                parcelas
+        );
+    }
 }
