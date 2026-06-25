@@ -4,6 +4,17 @@ API REST desenvolvida em Java com Spring Boot para processamento e consulta de p
 
 Este projeto foi desenvolvido como parte de um desafio técnico com foco em boas práticas de arquitetura e modelagem de domínio.
 
+## Tecnologias utilizadas
+
+- Java 17
+- Spring Boot 3.4
+- Spring Web
+- Spring Validation
+- Gradle
+- JUnit 5
+- Mockito
+- MockMvc
+
 ## Funcionalidades
 
 - Criação de pagamento com validação de request
@@ -17,16 +28,23 @@ Este projeto foi desenvolvido como parte de um desafio técnico com foco em boas
 - Consulta de pagamento cancelado
 - Tratamento centralizado de exceções com respostas padronizadas
 
-## Tecnologias utilizadas
+## Endpoints
 
-- Java 17
-- Spring Boot 3.4
-- Spring Web
-- Spring Validation
-- Gradle
-- JUnit 5
-- Mockito
-- MockMvc
+- `POST /pagamentos`
+  - Cria um novo pagamento.
+- `GET /pagamentos`
+  - Lista todos os pagamentos.
+- `GET /pagamentos/{id}`
+  - Busca pagamento pelo id.
+- `PATCH /pagamentos/estorno/{id}`
+  - Cancela um pagamento pelo id.
+- `GET /pagamentos/estorno/{id}`
+  - Busca por id se o pagamento foi cancelado.
+
+## Observações
+
+- O repositório atual é em memória, então os dados são perdidos ao reiniciar a aplicação.
+- O projeto possui testes unitários, de controller e de integração cobrindo cenários de sucesso e erro.
 
 ## Estrutura e padrões utilizados
 
@@ -71,17 +89,3 @@ http://localhost:8080
 ```bash
 ./gradlew test --tests PaymentServiceTest
 ```
-
-## Endpoints principais
-
-- `POST /pagamentos`
-- `GET /pagamentos`
-- `GET /pagamentos/{id}`
-- `PATCH /pagamentos/estorno/{id}`
-- `GET /pagamentos/estorno/{id}`
-
-## Observações
-
-- O repositório atual é em memória, então os dados são perdidos ao reiniciar a aplicação.
-- O projeto possui testes unitários, de controller e de integração cobrindo cenários de sucesso e erro.
-
