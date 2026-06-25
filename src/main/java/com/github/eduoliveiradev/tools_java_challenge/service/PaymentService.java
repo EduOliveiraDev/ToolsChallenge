@@ -57,7 +57,7 @@ public class PaymentService {
     public PaymentResponse getPaymentCanceledById(Long id) {
         var payment = paymentRepository.findById(id)
                 .orElseThrow(() -> new PaymentNotFoundException("Pagamento não encontrado"));
-        if (!payment.status().equals("CANCELADO")) {
+        if (!payment.status().equals(PaymentStatus.CANCELADO)) {
             throw new PaymentNotFoundException("Pagamento não está cancelado");
         }
         return paymentMapper.toResponse(payment);
