@@ -17,8 +17,8 @@ public class PayFullPayment implements PaymentStrategy {
                 "1234567890",
                 "147258369",
                 "AUTORIZADO",
-                paymentResquest.transacao().formaPagamento().tipo(),
-                paymentResquest.transacao().formaPagamento().parcelas()
+                paymentResquest.transacao().formaPagamento().tipo().toUpperCase(),
+                1
         );
     }
 }

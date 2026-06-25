@@ -16,7 +16,7 @@ public class InstallmentsBankPayment implements PaymentStrategy {
 				"1234567890",
 				"147258369",
 				"AUTORIZADO",
-				paymentResquest.transacao().formaPagamento().tipo(),
+				paymentResquest.transacao().formaPagamento().tipo().toUpperCase(),
 				paymentResquest.transacao().formaPagamento().parcelas()
 		);
 	}
