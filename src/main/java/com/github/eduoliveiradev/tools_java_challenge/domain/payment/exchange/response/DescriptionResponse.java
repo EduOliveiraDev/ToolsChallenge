@@ -1,5 +1,7 @@
 package com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response;
 
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.enums.PaymentStatus;
+
 import java.time.LocalDateTime;
 
 public record DescriptionResponse(
@@ -8,6 +10,6 @@ public record DescriptionResponse(
         String estabelecimento,
         String nsu,
         String codigoAutorizacao,
-        String status
+        PaymentStatus status
 ) {
 }

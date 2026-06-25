@@ -23,7 +23,7 @@ public class PaymentMapper {
                                 payment.status()
                         ),
                         new PaymentMethodResponse(
-                                payment.tipo(),
+                                payment.tipo().getLabel(),
                                 payment.parcelas()
                         )
                 )

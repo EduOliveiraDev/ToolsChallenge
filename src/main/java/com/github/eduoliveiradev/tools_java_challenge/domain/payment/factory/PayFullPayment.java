@@ -1,5 +1,7 @@
 package com.github.eduoliveiradev.tools_java_challenge.domain.payment.factory;
 
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.enums.PaymentStatus;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.enums.PaymentType;
 import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.Payment;
 import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.PaymentResquest;
 
@@ -16,8 +18,8 @@ public class PayFullPayment implements PaymentStrategy {
                 paymentResquest.transacao().descricao().estabelecimento(),
                 "1234567890",
                 "147258369",
-                "AUTORIZADO",
-                paymentResquest.transacao().formaPagamento().tipo().toUpperCase(),
+                PaymentStatus.AUTORIZADO,
+                PaymentType.AVISTA,
                 1
         );
     }

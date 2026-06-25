@@ -1,5 +1,8 @@
 package com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange;
 
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.enums.PaymentStatus;
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.enums.PaymentType;
+
 import java.time.LocalDateTime;
 
 public record Payment(
@@ -10,15 +13,15 @@ public record Payment(
         String estabelecimento,
         String nsu,
         String codigoAutorizacao,
-        String status,
-        String tipo,
+        PaymentStatus status,
+        PaymentType tipo,
         Integer parcelas
 ) {
     public Long getId() {
         return id;
     }
 
-    public Payment changeStatus(String status) {
+    public Payment changeStatus(PaymentStatus status) {
         return new Payment(
                 cartao,
                 id,

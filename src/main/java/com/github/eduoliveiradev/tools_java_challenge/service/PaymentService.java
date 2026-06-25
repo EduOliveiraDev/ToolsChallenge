@@ -1,5 +1,6 @@
 package com.github.eduoliveiradev.tools_java_challenge.service;
 
+import com.github.eduoliveiradev.tools_java_challenge.domain.payment.enums.PaymentStatus;
 import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.PaymentMapper;
 import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.request.PaymentResquest;
 import com.github.eduoliveiradev.tools_java_challenge.domain.payment.exchange.response.PaymentResponse;
@@ -48,7 +49,7 @@ public class PaymentService {
     public PaymentResponse cancelPayment(Long id) {
         var payment = paymentRepository.findById(id)
                 .orElseThrow(() -> new PaymentNotFoundException("Pagamento não encontrado"));
-        var updatedPayment = payment.changeStatus("CANCELADO");
+        var updatedPayment = payment.changeStatus(PaymentStatus.CANCELADO);
         paymentRepository.save(updatedPayment);
         return paymentMapper.toResponse(updatedPayment);
     }
