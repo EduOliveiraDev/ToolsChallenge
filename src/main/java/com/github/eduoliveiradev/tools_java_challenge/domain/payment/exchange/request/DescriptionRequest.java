@@ -6,7 +6,8 @@ import jakarta.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 public record DescriptionRequest(
-        @Positive
+        @Positive(message = "O campo valor deve ser maior que zero")
+        @NotBlank(message = "O campo valor é obrigatório")
         String valor,
         LocalDateTime dataHora,
         @NotBlank(message = "O campo estabelecimento é obrigatório")
